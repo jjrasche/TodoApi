@@ -17,6 +17,7 @@ namespace TodoApi
 
         public void EnqueueJob()
         {
+            BackgroundJob.Schedule(() => Console.WriteLine("hello bob"), TimeSpan.FromSeconds(20));
             _backgroundJobClient.AddOrUpdate("powerfuljob", () => Console.Write("Powerful!"), "*/20 * * * * *");
             // _backgroundJobClient.Enqueue(() => Console.WriteLine("Hello from a background job!"));
         }
